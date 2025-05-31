@@ -1,83 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <link rel="stylesheet" href="./src/output.css">
-  <title>Frontend Mentor | Time tracking dashboard</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-</head>
-<body class="bg-lessDarkNavy flex flex-col items-center justify-center min-h-screen text-white font-sans p-6">
-  git init
-  <header class="flex items-center justify-between w-full max-w-4xl p-5 py-7 bg-purple rounded-lg  mb-8">
-    <div class="w-[75px] h-[75px] mr-3">
-      <img src="./images/image-jeremy.png" alt="jeremy's profile image" class="w-full h-full rounded-full border-4 border-white">
-    </div>
-    <div>
-      <p class="text-lightNavy">Report for</p>
-      <h1 class="text-3xl font-light font-rubik">Jeremy Robson</h1>
-    </div>
-  </header>
-
-  Daily
-  Weekly
-  Monthly
-
-  Work
-  5hrs <!-- daily -->
-  Previous - 7hrs <!-- daily -->
-  32hrs <!-- weekly -->
-  Previous - 36hrs <!-- weekly -->
-  103hrs <!-- monthly -->
-  Previous - 128hrs <!-- monthly -->
-
-  Play
-  1hr <!-- daily -->
-  Previous - 2hrs <!-- daily -->
-  10hrs <!-- weekly -->
-  Previous - 8hrs <!-- weekly -->
-  23hrs <!-- monthly -->
-  Previous - 29hrs <!-- monthly -->
-
-  Study
-  0hrs <!-- daily -->
-  Previous - 1hr <!-- daily -->
-  4hrs <!-- weekly -->
-  Previous - 7hrs <!-- weekly -->
-  13hrs <!-- monthly -->
-  Previous - 19hrs <!-- monthly -->
-
-  Exercise
-  1hr <!-- daily -->
-  Previous - 1hr <!-- daily -->
-  4hrs <!-- weekly -->
-  Previous - 5hrs <!-- weekly -->
-  11hrs <!-- monthly -->
-  Previous - 18hrs <!-- monthly -->
-
-  Social
-  1hr <!-- daily -->
-  Previous - 3hrs <!-- daily -->
-  5hrs <!-- weekly -->
-  Previous - 10hrs <!-- weekly -->
-  21hrs <!-- monthly -->
-  Previous - 23hrs <!-- monthly -->
-
-  Self Care
-  0hrs <!-- daily -->
-  Previous - 1hr <!-- daily -->
-  2hrs <!-- weekly -->
-  Previous - 2hrs <!-- weekly -->
-  7hrs <!-- monthly -->
-  Previous - 11hrs <!-- monthly -->
-
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+    <link rel="stylesheet" href="./src/output.css" />
+    <title>Frontend Mentor | Time tracking dashboard</title>
+  </head>
+  <body
+    class="bg-darkNavy flex flex-col items-center w-screen justify-center min-h-screen text-white font-rubik p-6"
+  >
+    <header
+      class="flex items-center justify-between w-full max-w-4xl p-5 py-7 bg-purple rounded-xl mb-8 relative"
+    >
+      <div class="w-[75px] h-[75px] mr-3">
+        <img
+          src="./images/image-jeremy.png"
+          alt="jeremy's profile image"
+          class="w-full h-full rounded-full border-4 border-white"
+        />
+      </div>
+      <div>
+        <p class="text-lightNavy">Report for</p>
+        <h1 class="text-3xl font-light">Jeremy Robson</h1>
+      </div>
+      <ul
+        class="absolute w-full left-0 top-[80%] flex items-center justify-between pt-10 p-5 gap-4 text-sm bg-lessDarkNavy rounded-xl -z-10"
+      >
+        <li>Daily</li>
+        <li>Weekly</li>
+        <li>Monthly</li>
+      </ul>
+    </header>
+    <main class="w-full max-w-4xl mt-24 gap-32">
+      <!-- #work -->
+      <div
+        id="work"
+        class="w-full flex items-center justify-between flex-col mb-20 relative max-w-4xl bg-lessDarkNavy rounded-xl p-6 gap-5"
+      >
+        <div class="bg-work-orange w-full h-fit absolute -top-10 left-0 -z-10 rounded-xl flex items-center justify-end">
+          <img src="./images/icon-work.svg" alt="work-icon" />
+        </div>
+        <div class="flex items-center justify-between w-full">
+          <h2>Work</h2>
+          <img src="./images/icon-ellipsis.svg" alt="ellipses" />
+        </div>
+        <div class="flex items-center justify-between w-full">
+          <p class="text-5xl font-light">5hrs</p>
+          <p class="text-lightNavy">
+            Last week - <span id="work-previous">7hrs</span>
+          </p>
+        </div>
+      </div>
+      <!-- play -->
+      <div
+        id="play"
+        class="w-full flex items-center justify-between flex-col mb-20 relative max-w-4xl bg-lessDarkNavy rounded-xl p-6 gap-5"
+      >
+        <div class="bg-play-blue w-full h-fit absolute -top-10 left-0 -z-10 rounded-xl flex items-center justify-end">
+          <img src="./images/icon-play.svg" alt="play-icon" />
+        </div>
+        <div class="flex items-center justify-between w-full">
+          <h2>Play</h2>
+          <img src="./images/icon-ellipsis.svg" alt="ellipses" />
+        </div>
+        <div class="flex items-center justify-between w-full">
+          <p class="text-5xl font-light">5hrs</p>
+          <p class="text-lightNavy">
+            Last week - <span id="last-week-work">7hrs</span>
+          </p>
+        </div>
+      </div>
+      <!-- study -->
+      <div
+        id="study"
+        class="w-full flex items-center justify-between flex-col mb-20 relative max-w-4xl bg-lessDarkNavy rounded-xl p-6 gap-5"
+      >
+        <div class="bg-study-pink w-full h-fit absolute -top-10 left-0 -z-10 rounded-xl flex items-center justify-end">
+          <img src="./images/icon-study.svg" alt="study-icon" />
+        </div>
+        <div class="flex items-center justify-between w-full">
+          <h2>Study</h2>
+          <img src="./images/icon-ellipsis.svg" alt="ellipses" />
+        </div>
+        <div class="flex items-center justify-between w-full">
+          <p class="text-5xl font-light">5hrs</p>
+          <p class="text-lightNavy">
+            Last week - <span id="last-week-work">7hrs</span>
+          </p>
+        </div>
+      </div>
+      <!-- exercise -->
+      <div
+        id="exercise"
+        class="w-full flex items-center justify-between flex-col mb-20 relative max-w-4xl bg-lessDarkNavy rounded-xl p-6 gap-5"
+      >
+        <div class="bg-exercise-green w-full h-fit absolute -top-10 left-0 -z-10 rounded-xl flex items-center justify-end">
+          <img src="./images/icon-exercise.svg" alt="exercise" />
+        </div>
+        <div class="flex items-center justify-between w-full">
+          <h2>Exercise</h2>
+          <img src="./images/icon-ellipsis.svg" alt="ellipses" />
+        </div>
+        <div class="flex items-center justify-between w-full">
+          <p class="text-5xl font-light">5hrs</p>
+          <p class="text-lightNavy">
+            Last week - <span id="last-week-work">7hrs</span>
+          </p>
+        </div>
+      </div>
+      <!-- social -->
+      <div
+        id="social"
+        class="w-full flex items-center justify-between flex-col mb-20 relative max-w-4xl bg-lessDarkNavy rounded-xl p-6 gap-5"
+      >
+        <div class="bg-social-purple w-full h-fit absolute -top-10 left-0 -z-10 rounded-xl flex items-center justify-end">
+          <img src="./images/icon-social.svg" alt="social-icon" />
+        </div>
+        <div class="flex items-center justify-between w-full">
+          <h2>Social</h2>
+          <img src="./images/icon-ellipsis.svg" alt="ellipses" />
+        </div>
+        <div class="flex items-center justify-between w-full">
+          <p class="text-5xl font-light">5hrs</p>
+          <p class="text-lightNavy">
+            Last week - <span id="last-week-work">7hrs</span>
+          </p>
+        </div>
+      </div>
+      <!-- social -->
+      <div
+        id="social"
+        class="w-full flex items-center justify-between flex-col mb-20 relative max-w-4xl bg-lessDarkNavy rounded-xl p-6 gap-5"
+      >
+        <div class="bg-selfcare-yellow w-full h-fit absolute -top-10 left-0 -z-10 rounded-xl flex items-center justify-end">
+          <img src="./images/icon-self-care.svg" alt="self-care-icon" />
+        </div>
+        <div class="flex items-center justify-between w-full">
+          <h2>Self Care</h2>
+          <img src="./images/icon-ellipsis.svg" alt="ellipses" />
+        </div>
+        <div class="flex items-center justify-between w-full">
+          <p class="text-5xl font-light">5hrs</p>
+          <p class="text-lightNavy">
+            Last week - <span id="last-week-work">7hrs</span>
+          </p>
+        </div>
+      </div>
+    </main>
+    <footer class="text-center ">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+    </footer>
+  </body>
 </html>
