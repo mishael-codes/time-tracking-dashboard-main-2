@@ -34,7 +34,6 @@ const hoursMap = {
 fetch("/data.json")
   .then((res) => res.json())
   .then((data) => {
-    // Attach click handlers once the data is ready
     Object.entries(buttons).forEach(([period, button]) => {
       button.addEventListener("click", () => {
         setActiveButton(period);
@@ -47,27 +46,68 @@ fetch("/data.json")
   })
   .catch((err) => console.error("Error fetching data:", err));
 
-// Helper to toggle the active button
 function setActiveButton(active) {
   Object.entries(buttons).forEach(([key, btn]) => {
     btn.classList.toggle("active", key === active);
   });
 }
 
-// Actual DOM update logic
+// Count-up for current hours
+function countTo(element, target, duration = 800) {
+  const start = parseInt(element.textContent) || 0;
+  const range = target - start;
+  const startTime = performance.now();
+
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const value = Math.round(start + range * progress);
+    element.textContent = `${value}hrs`;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
+// Count-up for previous hours + label
+function countToLabelled(element, label, target, duration = 800) {
+  const currentText = element.textContent.match(/\d+/);
+  const start = currentText ? parseInt(currentText[0]) : 0;
+  const range = target - start;
+  const startTime = performance.now();
+
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const value = Math.round(start + range * progress);
+    element.textContent = `${label} - ${value}hrs`;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
 function updateDOM(data, period) {
   data.forEach((activity) => {
     const name = activity.title;
     const { current, previous } = activity.timeframes[period];
     if (hoursMap[name]) {
-      hoursMap[name].current.textContent = `${current}hrs`;
-      hoursMap[name].previous.textContent = `${
+      countTo(hoursMap[name].current, current);
+
+      const label =
         period === "daily"
           ? "Yesterday"
           : period === "weekly"
           ? "Last week"
-          : " Last month"
-      } - ${previous}hrs`;
+          : "Last month";
+
+      countToLabelled(hoursMap[name].previous, label, previous);
     }
   });
 }
