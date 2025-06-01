@@ -18,3 +18,7 @@
 
   --font-rubik: 'Rubik', sans-serif;
 }
+
+.active{
+  color: var(--color-white);
+}
